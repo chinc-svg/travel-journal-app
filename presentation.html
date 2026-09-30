@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>นำเสนอโครงงาน Travel Journal App</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Sarabun', 'Segoe UI', Tahoma, sans-serif; }
+    body { background-color: #0f172a; color: #f8fafc; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+    
+    /* Slide Container */
+    .slide-container { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; position: relative; }
+    .slide { display: none; width: 100%; max-width: 1000px; height: 560px; background: #1e293b; border-radius: 20px; padding: 40px; border: 1px solid #334155; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); flex-direction: column; justify-content: space-between; animation: fadeIn 0.4s ease; }
+    .slide.active { display: flex; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Header & Typography */
+    .slide-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #334155; padding-bottom: 15px; margin-bottom: 20px; }
+    .tag { background: #3b82f6; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; }
+    h1 { font-size: 2.2rem; color: #38bdf8; font-weight: 700; }
+    h2 { font-size: 1.8rem; color: #f8fafc; }
+    p { font-size: 1.05rem; color: #94a3b8; line-height: 1.6; }
+
+    /* Content Layouts */
+    .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; flex: 1; align-items: center; }
+    .card { background: #0f172a; padding: 18px; border-radius: 12px; border: 1px solid #334155; }
+    .card-title { color: #38bdf8; font-weight: bold; margin-bottom: 8px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+    
+    /* Mockup Screens */
+    .phone-mockup { background: #090d16; border: 2px solid #38bdf8; border-radius: 16px; padding: 15px; height: 100%; display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+    .mock-badge { background: #3b82f6; color: white; padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; width: fit-content; }
+    .mock-img-placeholder { background: linear-gradient(135deg, #3b82f6, #8b5cf6); height: 120px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+    .mock-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .mock-chip { background: #334155; color: #e2e8f0; font-size: 0.75rem; padding: 4px 8px; border-radius: 12px; }
+
+    /* Bullet points */
+    ul { list-style: none; }
+    ul li { margin-bottom: 12px; position: relative; padding-left: 24px; color: #cbd5e1; font-size: 1rem; }
+    ul li::before { content: "✔"; position: absolute; left: 0; color: #38bdf8; font-weight: bold; }
+
+    /* Controls Footer */
+    .controls { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: #090d16; border-top: 1px solid #334155; }
+    .btn { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+    .btn:hover { background: #2563eb; }
+    .btn:disabled { background: #334155; color: #64748b; cursor: not-allowed; }
+    .slide-number { font-weight: bold; color: #64748b; }
+  </style>
+</head>
+<body>
+
+  <div class="slide-container">
+    
+    <!-- SLIDE 1: COVER -->
+    <div class="slide active">
+      <div class="slide-header">
+        <span class="tag">การนำเสนอโครงงานวิชาแอปพลิเคชันมือถือ</span>
+        <span style="color: #64748b;">Travel Journal App</span>
+      </div>
+      <div style="text-align: center; margin: auto 0;">
+        <div style="font-size: 4rem; margin-bottom: 10px;">✈️📸</div>
+        <h1 style="font-size: 3rem; margin-bottom: 10px;">Travel Journal App</h1>
+        <p style="font-size: 1.3rem; color: #94a3b8; margin-bottom: 30px;">แอปพลิเคชันบันทึกความทรงจำการเดินทางสไตล์มินิมอล</p>
+        <div style="background: #0f172a; display: inline-block; padding: 15px 30px; border-radius: 12px; border: 1px solid #334155;">
+          <p style="color: #38bdf8; font-weight: bold;">ผู้พัฒนา: นายชิน ชาปัญญา</p>
+          <p style="color: #cbd5e1; font-size: 0.95rem;">รหัสนักศึกษา: 663450181-4</p>
+        </div>
+      </div>
+      <div style="text-align: right; font-size: 0.85rem; color: #64748b;">กดปุ่ม ← หรือ → บนคีย์บอร์ดเพื่อเปลี่ยนสไลด์</div>
+    </div>
+
+    <!-- SLIDE 2: BACKGROUND & PURPOSE -->
+    <div class="slide">
+      <div class="slide-header">
+        <h2>💡 ความเป็นมา & วัตถุประสงค์ (Problem & Motivation)</h2>
+        <span class="tag">Background</span>
+      </div>
+      <div class="content-grid">
+        <div>
+          <div class="card" style="margin-bottom: 15px;">
+            <div class="card-title">❌ ปัญหาที่พบ (Pain Points)</div>
+            <p>เมื่อเดินทางท่องเที่ยว มักถ่ายรูปไว้เยอะมาก แต่ภาพถูกกระจัดกระจายอยู่ใน คลังภาพ (Gallery) ทำให้ลืมชื่อสถานที่ ลืมความรู้สึก หรือจำพิกัดตำแหน่งไม่ได้เมื่อเวลาผ่านไป</p>
+          </div>
+          <div class="card">
+            <div class="card-title">🎯 วัตถุประสงค์ในการสร้างแอป</div>
+            <p>เพื่อสร้างพื้นที่ส่วนตัวในการบันทึกไดอารี่การเดินทางแบบครบวงจร (All-in-One Journaling) ทั้งรูปภาพหลายใบ, อารมณ์ (Mood), บรรยากาศ, ค่าใช้จ่าย และพิกัด GPS บนระบบ Android/iOS</p>
+          </div>
+        </div>
+        <div class="phone-mockup" style="text-align: center;">
+          <div style="font-size: 3rem;">🗺️🧭</div>
+          <h3 style="color: #38bdf8;">"เก็บทุกความทรงจำ ไว้ในที่เดียว"</h3>
+          <p style="font-size: 0.9rem;">บันทึกง่าย • ค้นหาสะดวก • เรียกดูความทรงจำย้อนหลังได้ทันที</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: FEATURE 1 (ADD JOURNAL) -->
+    <div class="slide">
+      <div class="slide-header">
+        <h2>📝 ฟีเจอร์หลัก 1: ระบบเพิ่มบันทึกความทรงจำสุดล้ำ</h2>
+        <span class="tag">Feature 1</span>
+      </div>
+      <div class="content-grid">
+        <ul>
+          <li><b>Location Autocomplete:</b> มีรายชื่อสถานที่ตัวอย่าง (Preset List) และดึงประวัติสถานที่ที่เคยบันทึกมาแนะนำอัตโนมัติขณะพิมพ์</li>
+          <li><b>Multi-Image Picker:</b> รองรับการอัปโหลดรูปภาพพร้อมกันได้หลายรูปต่อ 1 ทริป</li>
+          <li><b>Mood & Weather Tags:</b> เลือกอารมณ์ (🥳, ☕, 🍕) และแท็กบรรยากาศ (☀️ แดดดี, 👫 ไปกับแฟน)</li>
+          <li><b>Rating & Expense:</b> ให้คะแนนดาว (⭐1-5) และเลือกช่วงงบประมาณ (฿฿฿)</li>
+          <li><b>GPS Location Tracking:</b> ดึงพิกัด ละติจูด/ลองจิจูด จริงจากอุปกรณ์</li>
+        </ul>
+        <div class="phone-mockup">
+          <div class="mock-badge">📍 เพิ่มบันทึกทริปใหม่</div>
+          <div style="background: #1e293b; padding: 8px; border-radius: 6px; color: #38bdf8; font-size: 0.85rem;">พิมพ์: คาเฟ่ ➔ [✨ คาเฟ่แมวเหมียว]</div>
+          <div class="mock-row">
+            <span class="mock-chip">🥳 สนุกมาก</span>
+            <span class="mock-chip">☀️ แดดดี</span>
+            <span class="mock-chip">👫 ไปกับแฟน</span>
+          </div>
+          <div style="color: #f59e0b; font-size: 0.9rem;">⭐⭐⭐⭐⭐ (5/5)</div>
+          <div class="mock-img-placeholder">📸 📸 📸</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: FEATURE 2 (HOME & CAROUSEL) -->
+    <div class="slide">
+      <div class="slide-header">
+        <h2>📱 ฟีเจอร์หลัก 2: หน้าแรก & Interactive Photo Gallery</h2>
+        <span class="tag">Feature 2</span>
+      </div>
+      <div class="content-grid">
+        <div class="phone-mockup">
+          <div class="mock-img-placeholder" style="height: 140px; position: relative;">
+            <span style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); font-size: 0.75rem; padding: 2px 6px; border-radius: 8px;">📷 +3 รูป</span>
+            <span>🖼️ สไลด์ปัดซ้าย-ขวา</span>
+          </div>
+          <div style="font-weight: bold; color: #f8fafc; font-size: 1.1rem;">คาเฟ่คนเท่ ชะอำ</div>
+          <div style="color: #94a3b8; font-size: 0.85rem;">📅 30 ก.ย. 2026 • ฿฿ (ปานกลาง)</div>
+          <p style="font-size: 0.8rem; color: #cbd5e1;">"กาแฟอร่อย บรรยากาศติดริมทะเล ลมพัดเย็นสบายตลอดวัน..."</p>
+        </div>
+        <div>
+          <div class="card" style="margin-bottom: 15px;">
+            <div class="card-title">🎨 Card Design ระดับ Pro</div>
+            <p>แสดงการ์ดรายการทริปอย่างสวยงาม พร้อม Badge แสดงจำนวนรูปภาพรวม, แท็กอารมณ์ และวันที่บันทึก</p>
+          </div>
+          <div class="card">
+            <div class="card-title">🔍 Image Carousel Modal</div>
+            <p>เมื่อผู้ใช้กดแตะที่การ์ดสถานที่ จะเปิดหน้าต่าง Full Detail Modal ขึ้นมา พร้อมระบบ <b>ปัดรูปภาพสไลด์ซ้าย-ขวา</b> ดูภาพขนาดใหญ่ได้เต็มตา</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: FEATURE 3 (PROFILE & STATS) -->
+    <div class="slide">
+      <div class="slide-header">
+        <h2>📊 ฟีเจอร์หลัก 3: Dashboard สถิติ & โปรไฟล์ผู้ใช้</h2>
+        <span class="tag">Feature 3</span>
+      </div>
+      <div class="content-grid">
+        <ul>
+          <li><b>Travel Dashboard:</b> สรุปสถิติการเดินทางจริงแบบ Real-time (จำนวนทริปทั้งหมด, รูปภาพรวมทั้งหมด, คะแนนดาวเฉลี่ย)</li>
+          <li><b>User Profile Customization:</b> สามารถเปลี่ยนรูปโปรไฟล์จากคลังภาพ และแก้ไขชื่อผู้ใช้งานได้</li>
+          <li><b>Hardware API Integration:</b> ตรวจสอบสถานะแบตเตอรี่คงเหลือด้วย `expo-battery`</li>
+          <li><b>Daily Travel Reminder:</b> ปุ่มระบบจำลองส่งการแจ้งเตือนเตือนบันทึกประจำวัน</li>
+        </ul>
+        <div class="phone-mockup">
+          <div style="text-align: center;">
+            <div style="width: 60px; height: 60px; background: #3b82f6; border-radius: 50%; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">👨‍💻</div>
+            <div style="font-weight: bold;">นายชิน ชาปัญญา</div>
+            <div style="font-size: 0.75rem; color: #94a3b8;">นักศึกษา: 663450181-4</div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; text-align: center; margin-top: 10px;">
+            <div style="background: #1e293b; padding: 6px; border-radius: 6px;"><div style="color: #38bdf8; font-bold;">5</div><div style="font-size: 0.65rem;">ทริป</div></div>
+            <div style="background: #1e293b; padding: 6px; border-radius: 6px;"><div style="color: #f59e0b; font-bold;">18</div><div style="font-size: 0.65rem;">รูปภาพ</div></div>
+            <div style="background: #1e293b; padding: 6px; border-radius: 6px;"><div style="color: #10b981; font-bold;">4.8</div><div style="font-size: 0.65rem;">ดาว</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: TECH STACK -->
+    <div class="slide">
+      <div class="slide-header">
+        <h2>🛠️️ เทคโนโลยีที่ใช้ในการพัฒนา (Tech Stack)</h2>
+        <span class="tag">Architecture</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+        <div class="card">
+          <div class="card-title">⚛️ Frontend Framework</div>
+          <p><b>React Native & Expo (SDK 53)</b><br>พัฒนาแอปพลิเคชันแบบ Cross-Platform รวดเร็วและเสถียร</p>
+        </div>
+        <div class="card">
+          <div class="card-title">🚀 Navigation</div>
+          <p><b>Expo Router (File-based Routing)</b><br>จัดการเส้นทางหน้าจอแอปผ่านโครงสร้างโฟลเดอร์ `app/(tabs)`</p>
+        </div>
+        <div class="card">
+          <div class="card-title">💾 Local Storage</div>
+          <p><b>AsyncStorage</b><br>บันทึกข้อมูลทริปและรูปภาพไว้ในเครื่อง ปลอดภัย ข้อมูลไม่หายเมื่อปิดแอป</p>
+        </div>
+        <div class="card">
+          <div class="card-title">🔌 Native Device APIs</div>
+          <p><b>Expo Location / Battery / ImagePicker</b><br>เข้าถึงกล้อง คลังภาพ พิกัด GPS และแบตเตอรี่ในเครื่อง</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: THANK YOU & Q&A -->
+    <div class="slide">
+      <div style="text-align: center; margin: auto 0;">
+        <div style="font-size: 5rem; margin-bottom: 20px;">🎉✨</div>
+        <h1 style="font-size: 2.8rem; margin-bottom: 15px;">จบการนำเสนอ</h1>
+        <p style="font-size: 1.3rem; color: #38bdf8; margin-bottom: 25px;">ขอบคุณอาจารย์และเพื่อนๆ ทุกท่านสำหรับการรับชม</p>
+        <div style="background: #0f172a; display: inline-block; padding: 20px 40px; border-radius: 16px; border: 1px solid #3b82f6;">
+          <h3 style="color: #f8fafc; margin-bottom: 5px;">💬 มีคำถามเพิ่มเติมหรือไม่ครับ? (Q&A)</h3>
+          <p style="font-size: 0.95rem; color: #94a3b8;">Travel Journal App • v1.0.0</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Controls Footer -->
+  <div class="controls">
+    <button class="btn" id="prevBtn" onclick="changeSlide(-1)">← ย้อนกลับ</button>
+    <span class="slide-number" id="slideNum">หน้า 1 / 7</span>
+    <button class="btn" id="nextBtn" onclick="changeSlide(1)">ถัดไป →</button>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const slideNum = document.getElementById('slideNum');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updateSlides() {
+      slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === currentSlide);
+      });
+      slideNum.textContent = `หน้า ${currentSlide + 1} / ${slides.length}`;
+      prevBtn.disabled = currentSlide === 0;
+      nextBtn.disabled = currentSlide === slides.length - 1;
+    }
+
+    function changeSlide(direction) {
+      currentSlide += direction;
+      if (currentSlide < 0) currentSlide = 0;
+      if (currentSlide >= slides.length) currentSlide = slides.length - 1;
+      updateSlides();
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'Space') changeSlide(1);
+      if (e.key === 'ArrowLeft') changeSlide(-1);
+    });
+
+    updateSlides();
+  </script>
+</body>
+</html>
